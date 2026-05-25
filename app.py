@@ -1,38 +1,37 @@
 import streamlit as st
-import datetime
 
-# 1. 設定網頁標題與圖示
-st.set_page_config(page_title="我的個人空間", page_icon="🌟")
-
-# 2. 網頁大標題
-st.title("🚀 歡迎來到我的第一支網頁程式！")
-st.write("這是完全用 Python 打造的互動式網站。")
-
-# 3. 側邊欄（Sidebar）
-st.sidebar.header("個人設定")
-user_name = st.sidebar.text_input("輸入你的名字：", "學習者")
-
-# 4. 主畫面歡迎詞
-st.subheader(f"👋 你好，{user_name}！今天想寫點什麼？")
-
-# 5. 互動組件：心情選擇器
-mood = st.select_slider(
-    "選擇你今天的心情分數：",
-    options=["累翻了 🥱", "還可以 😐", "不錯 🙂", "動力滿滿 🔥", "超級開心 🎉"]
+# 1. 網頁基本設定（讓網站變寬、變專業的魔法）
+st.set_page_config(
+    page_title="SmartVest 智能理財投資平台",
+    page_icon="💰",
+    layout="wide", 
+    initial_sidebar_state="expanded"
 )
-st.write(f"你今天的心情是：**{mood}**")
 
-# 6. 互動組件：輸入每天的進度
+# 2. 側邊欄標題
+st.sidebar.markdown("# 🧭 平台導航")
+st.sidebar.info("歡迎使用 SmartVest！請在左側選擇您要使用的理財模組。")
+
+# 3. 主頁面標題與介紹
+st.title("💰 SmartVest 智能理財投資平台")
+st.subheader("一站式管好錢包、監控全球資產，開啟您的被動收入之旅。")
+
 st.markdown("---")
-st.subheader("📚 今日學習與目標追蹤")
 
-today = datetime.date.today()
-st.date_input("今天是：", today)
+# 4. 平台核心優勢
+col1, col2, col3 = st.columns(3)
 
-study_topic = st.text_input("今天學習了什麼主題？", "例如：Python 網頁開發入門")
-study_hours = st.number_input("預計學習幾小時？", min_value=0.0, max_value=24.0, value=1.0, step=0.5)
+with col1:
+    st.markdown("### 👛 錢包管家")
+    st.write("每日收支輕鬆記，圖表化分析您的消費盲點，卡緊您的預算防線。")
 
-# 7. 提交按鈕與結果顯示
-if st.button("儲存今日紀錄"):
-    st.success(f"✅ 紀錄成功！{user_name} 在 {today} 學習了「{study_topic}」共 {study_hours} 小時！")
-    st.balloons()  # 畫面會噴出慶祝氣球！
+with col2:
+    st.markdown("### 📊 全球市場更新")
+    st.write("零延遲對接全球金融數據，每日自動更新股票、指數、基金與債券行情。")
+
+with col3:
+    st.markdown("### 🛡️ 軍事級保安")
+    st.write("架設於頂級雲端防護網後，配合代碼層級的反暴力破解，守護您的資產隱私。")
+
+st.markdown("---")
+st.info("💡 **系統提示**：目前平台架構已成功搭建。接下來，我們將逐步解鎖「每日金融數據對接」與「個人記帳功能」。")
